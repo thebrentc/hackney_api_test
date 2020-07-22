@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
 </head>
 <body>
-	
+<h1>API tester</h1>	
 	<?php
 		// TODO security
 		if ($_POST['postcode']) {
@@ -15,16 +15,17 @@
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
 			curl_setopt($ch, CURLOPT_HEADER, false);	
 			// TODO fix		
-			$url = 'http://localhost/hackneytest/hackney.api/?postcode='.urlencode($_POST['postcode']);
+			$url = 'http://localhost/hackneytest/hackney.php/?postcode='.urlencode($_POST['postcode']);
 			curl_setopt($ch, CURLOPT_URL,$url);
 
 			/* query */
 			$result = curl_exec($ch);
+			
 			// TODO pretty output results, and handle pagination
 			print_r($result);
 		}
 	?>
-	
+
 	<form action="index.php" method="post">
 		<input type="text" name="postcode"/>
 		<input type="submit"/>
